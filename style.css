@@ -54,6 +54,13 @@ nav a:hover { opacity: 0.35; }
 }
 @keyframes fadeUp { to { opacity: 0.95; transform: translateY(0); } }
 @keyframes fadeUpTagline { to { opacity: 0.55; transform: translateY(0); } }
+.hero-text-wrap {
+  margin-top: 60px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
 .page-content { padding: 140px 5% 90px; min-height: 100vh; position: relative; z-index: 10; background: #000; }
 .section-inner { max-width: 1200px; margin: 0 auto; }
 .section-title { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 35px; opacity: 0.3; font-weight: 500; }
@@ -66,6 +73,7 @@ nav a:hover { opacity: 0.35; }
   margin-bottom: 16px; 
   font-weight: 300;
   overflow: hidden;
+  text-align: left;
 }
 .body-text span, .large-text span {
   display: inline-block;
