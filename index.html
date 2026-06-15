@@ -3,74 +3,290 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>4TH GROUND</title>
-  <meta name="description" content="4TH GROUND - Independent film distribution and sales">
+  <title>4TH GROUND | Independent Film Distribution</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { scroll-behavior: smooth; }
+    
     body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
       background: #000;
       color: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-      line-height: 1.6;
-      text-align: center;
+      line-height: 1.4;
+      overflow-x: hidden;
     }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 60px 20px;
-      min-height: 100vh;
+    
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 25px 5%;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
+      z-index: 1000;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent);
+      backdrop-filter: blur(8px);
     }
-    .logo {
-      font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: 0.3em;
-      margin-bottom: 30px;
+    
+    .logo img {
+      height: 28px;
+      width: auto;
+      display: block;
     }
-    .tagline {
-      font-size: 1rem;
-      font-weight: 300;
-      letter-spacing: 0.2em;
+    
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 45px;
+      font-size: 12px;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      color: #999;
+      transition: opacity 0.3s;
+    }
+    
+    nav a:hover { opacity: 0.3; }
+    
+    /* Hero */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #000 url('/hero.jpg') center/cover no-repeat;
+      position: relative;
+    }
+    
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      padding: 0 20px;
+    }
+    
+    .hero-logo {
+      max-width: 600px;
+      width: 80%;
+      height: auto;
+      margin: 0 auto 40px;
+      display: block;
+    }
+    
+    .hero .tagline {
+      font-size: clamp(14px, 1.5vw, 18px);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    
+    /* Sections */
+    section {
+      padding: 160px 5%;
+      border-bottom: 1px solid #0a0a0a;
+    }
+    
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 70px;
+      opacity: 0.4;
+    }
+    
+    .large-text {
+      font-size: clamp(28px, 3.5vw, 48px);
+      line-height: 1.25;
+      font-weight: 300;
+      margin-bottom: 50px;
+      letter-spacing: -1px;
+    }
+    
+    .body-text {
+      font-size: 18px;
+      line-height: 1.9;
+      opacity: 0.75;
+      max-width: 800px;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+    
+    /* Services */
+    .services-intro {
+      margin-bottom: 100px;
+    }
+    
+    .services-list {
+      display: grid;
+      gap: 80px;
+    }
+    
+    .service-block {
+      border-left: 1px solid #222;
+      padding-left: 40px;
+    }
+    
+    .service-block h3 {
+      font-size: 26px;
+      margin-bottom: 25px;
+      font-weight: 400;
+      letter-spacing: -0.5px;
+    }
+    
+    .service-block p {
+      font-size: 17px;
+      line-height: 1.8;
+      opacity: 0.65;
+      font-weight: 300;
+    }
+    
+    /* Contact */
+    #contact {
+      text-align: center;
+      padding: 200px 5%;
+    }
+    
+    #contact .large-text {
       margin-bottom: 60px;
     }
-    .contact {
-      margin-top: 40px;
-      font-size: 0.9rem;
+    
+    .contact-email {
+      font-size: clamp(24px, 4vw, 56px);
+      font-weight: 300;
+      letter-spacing: -1px;
     }
-    .contact a {
+    
+    .contact-email a {
       color: #fff;
       text-decoration: none;
       border-bottom: 1px solid #333;
-      transition: border 0.2s;
+      transition: all 0.4s;
     }
-    .contact a:hover {
-      border-bottom: 1px solid #fff;
+    
+    .contact-email a:hover {
+      border-color: #fff;
+      opacity: 0.6;
     }
-    @media (max-width: 600px) {
-      .logo { font-size: 1.8rem; letter-spacing: 0.2em; }
-      .tagline { font-size: 0.85rem; }
+    
+    /* Footer */
+    footer {
+      padding: 80px 5%;
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.3;
+      border-top: 1px solid #0a0a0a;
+    }
+    
+    @media (max-width: 768px) {
+      nav { padding: 20px 5%; }
+      .logo img { height: 22px; }
+      nav a { margin-left: 20px; font-size: 10px; }
+      section { padding: 100px 5%; }
+      .hero-logo { width: 90%; margin-bottom: 30px; }
+      .hero .tagline { letter-spacing: 2px; }
+      .service-block { padding-left: 20px; }
+      #contact { padding: 140px 5%; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1 class="logo">4TH GROUND</h1>
-    <p class="tagline">Independent Film Distribution</p>
-    
-    <!-- Add more sections here as needed -->
-    
-    <div class="contact">
-      <a href="mailto:contact@4thground.com">contact@4thground.com</a>
+  <nav>
+    <div class="logo"><img src="/logo.png" alt="4TH GROUND"></div>
+    <div>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
     </div>
-  </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <img src="/logo.png" alt="4TH GROUND" class="hero-logo">
+      <p class="tagline">WE DON'T JUST DISTRIBUTE FILMS • WE CONNECT THEM WITH THE RIGHT AUDIENCES • WE MAXIMIZE THEIR GLOBAL REACH</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-title">About Us</div>
+      <p class="large-text">At 4ᵀᴴ GROUND, we are passionate about bringing independent films to audiences around the world.</p>
+      
+      <p class="body-text">We work closely with filmmakers, producers, and production companies to help their projects reach the global market through strategic digital distribution.</p>
+      
+      <p class="body-text">Our mission is to empower independent filmmakers by creating opportunities for their films to be seen from medium-sized to prominent streaming platforms worldwide. We believe great cinema deserves visibility, regardless of budget or origin.</p>
+      
+      <p class="body-text">With a filmmaker-first approach, we focus on building meaningful partnerships, supporting the creatives, and helping quality films expand beyond borders. From emerging filmmakers to established production companies, we are committed to delivering content to platforms that connect stories with audiences everywhere.</p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="section-inner">
+      <div class="section-title">Our Services</div>
+      <div class="services-intro">
+        <p class="large-text">At 4ᵀᴴ GROUND, we provide global film distribution solutions tailored for independent filmmakers and production companies looking to expand their reach across international markets.</p>
+        <p class="body-text">Our mission is to help powerful stories connect with audiences worldwide through strategic digital distribution and professional delivery services.</p>
+      </div>
+      
+      <div class="services-list">
+        <div class="service-block">
+          <h3>Distribution Channels</h3>
+          <p>We work with a variety of distribution channels, including Subscription Video On Demand (SVOD), Advertising-Based Video On Demand (AVOD), Transactional Video On Demand (TVOD), FAST Channels, mobile streaming services, and inflight entertainment platforms. From medium-sized streaming services to prominent global platforms, we help position films where they have the best opportunity to grow and reach the right audiences.</p>
+        </div>
+        
+        <div class="service-block">
+          <h3>Technical Delivery</h3>
+          <p>Our team handles the technical preparation and delivery process required by modern streaming platforms. This includes film encoding, quality control, subtitle/closed captions integration, metadata preparation, and delivery packaging. We ensure that every project meets professional industry standards and platform specifications before distribution.</p>
+        </div>
+        
+        <div class="service-block">
+          <h3>Marketing & Strategy</h3>
+          <p>Beyond delivery, we also cover marketing and come up with promotional strategies designed to increase visibility and audience engagement. We assist with positioning films for the market, helping filmmakers identify the right platforms, audiences, and release opportunities for their projects. From trailers and artwork to promotional planning, we aim to strengthen the presentation and discoverability of every film we represent.</p>
+        </div>
+        
+        <div class="service-block">
+          <h3>Inflight Entertainment</h3>
+          <p>We also help filmmakers explore inflight entertainment opportunities, allowing films to reach international travellers through airline entertainment systems. This creates additional exposure and expands audience access beyond traditional streaming environments.</p>
+        </div>
+        
+        <div class="service-block">
+          <h3>Filmmaker-First Partnership</h3>
+          <p>At 4ᵀᴴ GROUND, we believe distribution should be collaborative and filmmaker-focused. We work hand in hand with creators throughout the entire process, offering guidance, communication, and support from onboarding to delivery and release. Our goal is not only to distribute films, but to build lasting partnerships with storytellers and help independent cinema thrive on a global scale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-title">Get In Touch</div>
+      <p class="large-text">For distribution inquiries</p>
+      <div class="contact-email">
+        <a href="mailto:acquisitions@4thground.com">acquisitions@4thground.com</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 4ᵀᴴ GROUND. ALL RIGHTS RESERVED.
+  </footer>
 </body>
 </html>
