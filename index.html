@@ -3,208 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>4TH GROUND | Independent Film Distribution</title>
+  <title>4TH GROUND</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
     html { scroll-behavior: smooth; }
-    
-    body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      background: #000;
-      color: #fff;
-      line-height: 1.4;
-      overflow-x: hidden;
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #000; color: #fff; line-height: 1.45; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    nav { position: fixed; top: 0; width: 100%; padding: 18px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.98), rgba(0,0,0,0.7), transparent); backdrop-filter: blur(12px); }
+    .logo img { height: 24px; width: auto; display: block; filter: brightness(1.1); }
+    nav a { color: #fff; text-decoration: none; margin-left: 35px; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; transition: opacity 0.2s; font-weight: 400; }
+    nav a:hover { opacity: 0.35; }
+    .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: #000 url('/hero.jpg') center/cover no-repeat; position: relative; overflow: hidden; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(0,0,0,0.2), rgba(0,0,0,0.9)); }
+    .hero-content { position: relative; z-index: 2; max-width: 1200px; padding: 0 20px; }
+    .hero-logo { max-width: 520px; width: 70%; height: auto; margin: 0 auto 30px; display: block; position: relative; transition: transform 0.1s linear; filter: drop-shadow(0 0 50px rgba(255,255,255,0.08)); }
+    .hero .tagline { font-size: clamp(12px, 1.3vw, 15px); letter-spacing: 3.5px; text-transform: uppercase; opacity: 0.6; line-height: 1.6; font-weight: 300; transition: opacity 0.3s; }
+    .hero.scrolled .tagline { opacity: 0; }
+    section { padding: 100px 5%; border-bottom: 1px solid #080808; position: relative; z-index: 10; background: #000; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-title { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 40px; opacity: 0.3; font-weight: 500; }
+    .large-text { font-size: clamp(24px, 3vw, 40px); line-height: 1.15; font-weight: 300; margin-bottom: 28px; letter-spacing: -1.3px; }
+    .body-text { font-size: 15px; line-height: 1.75; opacity: 0.65; max-width: 720px; margin-bottom: 18px; font-weight: 300; }
+    .platforms { margin-top: 50px; }
+    .platforms-title { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.25; margin-bottom: 25px; font-weight: 500; }
+    .platform-logos { display: flex; flex-wrap: wrap; gap: 28px; align-items: center; }
+    .platform-logos img { 
+      height: 16px; 
+      width: auto; 
+      filter: grayscale(1) brightness(0.3) drop-shadow(0 2px 8px rgba(255,255,255,0.15)); 
+      opacity: 0;
+      transform: translateX(-15px);
+      animation: slideIn 0.6s ease forwards;
+      transition: all 0.3s ease;
     }
-    
-    /* Nav */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 25px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent);
-      backdrop-filter: blur(8px);
+    .platform-logos img:nth-child(1) { animation-delay: 0.1s; }
+    .platform-logos img:nth-child(2) { animation-delay: 0.15s; }
+    .platform-logos img:nth-child(3) { animation-delay: 0.2s; }
+    .platform-logos img:nth-child(4) { animation-delay: 0.25s; }
+    .platform-logos img:nth-child(5) { animation-delay: 0.3s; }
+    .platform-logos img:nth-child(6) { animation-delay: 0.35s; }
+    .platform-logos img:nth-child(7) { animation-delay: 0.4s; }
+    .platform-logos img:nth-child(8) { animation-delay: 0.45s; }
+    .platform-logos img:hover { 
+      filter: grayscale(0) brightness(1) drop-shadow(0 4px 12px rgba(255,255,255,0.25)); 
+      transform: translateX(0) scale(1.1);
     }
-    
-    .logo img {
-      height: 28px;
-      width: auto;
-      display: block;
+    @keyframes slideIn {
+      to { opacity: 0.35; transform: translateX(0); }
     }
-    
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 45px;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: opacity 0.3s;
-    }
-    
-    nav a:hover { opacity: 0.3; }
-    
-    /* Hero */
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: #000 url('/hero.jpg') center/cover no-repeat;
-      position: relative;
-    }
-    
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1100px;
-      padding: 0 20px;
-    }
-    
-    .hero-logo {
-      max-width: 600px;
-      width: 80%;
-      height: auto;
-      margin: 0 auto 40px;
-      display: block;
-    }
-    
-    .hero .tagline {
-      font-size: clamp(14px, 1.5vw, 18px);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      opacity: 0.7;
-      line-height: 1.8;
-      font-weight: 300;
-    }
-    
-    /* Sections */
-    section {
-      padding: 160px 5%;
-      border-bottom: 1px solid #0a0a0a;
-    }
-    
-    .section-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    
-    .section-title {
-      font-size: 11px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 70px;
-      opacity: 0.4;
-    }
-    
-    .large-text {
-      font-size: clamp(28px, 3.5vw, 48px);
-      line-height: 1.25;
-      font-weight: 300;
-      margin-bottom: 50px;
-      letter-spacing: -1px;
-    }
-    
-    .body-text {
-      font-size: 18px;
-      line-height: 1.9;
-      opacity: 0.75;
-      max-width: 800px;
-      margin-bottom: 30px;
-      font-weight: 300;
-    }
-    
-    /* Services */
-    .services-intro {
-      margin-bottom: 100px;
-    }
-    
-    .services-list {
-      display: grid;
-      gap: 80px;
-    }
-    
-    .service-block {
-      border-left: 1px solid #222;
-      padding-left: 40px;
-    }
-    
-    .service-block h3 {
-      font-size: 26px;
-      margin-bottom: 25px;
-      font-weight: 400;
-      letter-spacing: -0.5px;
-    }
-    
-    .service-block p {
-      font-size: 17px;
-      line-height: 1.8;
-      opacity: 0.65;
-      font-weight: 300;
-    }
-    
-    /* Contact */
-    #contact {
-      text-align: center;
-      padding: 200px 5%;
-    }
-    
-    #contact .large-text {
-      margin-bottom: 60px;
-    }
-    
-    .contact-email {
-      font-size: clamp(24px, 4vw, 56px);
-      font-weight: 300;
-      letter-spacing: -1px;
-    }
-    
-    .contact-email a {
-      color: #fff;
-      text-decoration: none;
-      border-bottom: 1px solid #333;
-      transition: all 0.4s;
-    }
-    
-    .contact-email a:hover {
-      border-color: #fff;
-      opacity: 0.6;
-    }
-    
-    /* Footer */
-    footer {
-      padding: 80px 5%;
-      text-align: center;
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      opacity: 0.3;
-      border-top: 1px solid #0a0a0a;
-    }
-    
-    @media (max-width: 768px) {
-      nav { padding: 20px 5%; }
-      .logo img { height: 22px; }
-      nav a { margin-left: 20px; font-size: 10px; }
-      section { padding: 100px 5%; }
-      .hero-logo { width: 90%; margin-bottom: 30px; }
-      .hero .tagline { letter-spacing: 2px; }
-      .service-block { padding-left: 20px; }
-      #contact { padding: 140px 5%; }
-    }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 45px; margin-top: 50px; }
+    .team-member { text-align: left; }
+    .team-photo { width: 100%; aspect-ratio: 3/4; background: #0a0a0a; margin-bottom: 18px; object-fit: cover; filter: grayscale(0.15) contrast(1.05); }
+    .team-name { font-size: 17px; margin-bottom: 5px; font-weight: 400; letter-spacing: -0.3px; }
+    .team-role { font-size: 11px; opacity: 0.45; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 3px; font-weight: 500; }
+    .team-location { font-size: 12px; opacity: 0.3; font-weight: 300; }
+    .services-intro { margin-bottom: 55px; }
+    .services-list { display: grid; gap: 50px; }
+    .service-block { border-left: 1px solid #151515; padding-left: 30px; }
+    .service-block h3 { font-size: 20px; margin-bottom: 15px; font-weight: 400; letter-spacing: -0.4px; }
+    .service-block p { font-size: 14px; line-height: 1.65; opacity: 0.55; font-weight: 300; }
+    #contact { text-align: center; padding: 140px 5%; }
+    #contact .large-text { margin-bottom: 35px; }
+    .contact-email { font-size: clamp(20px, 3.2vw, 44px); font-weight: 300; letter-spacing: -0.8px; }
+    .contact-email a { color: #fff; text-decoration: none; border-bottom: 1px solid #1a1a1a; transition: all 0.3s; }
+    .contact-email a:hover { border-color: #fff; opacity: 0.4; }
+    footer { padding: 50px 5%; text-align: center; font-size: 8px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.2; border-top: 1px solid #080808; }
+    @media (max-width: 768px) { nav { padding: 16px 5%; } .logo img { height: 19px; } nav a { margin-left: 16px; font-size: 9px; letter-spacing: 1.8px; } section { padding: 70px 5%; } .hero-logo { width: 80%; margin-bottom: 22px; } .hero .tagline { letter-spacing: 2.5px; font-size: 11px; } .service-block { padding-left: 18px; } #contact { padding: 100px 5%; } .team-grid { gap: 30px; } .platform-logos { gap: 20px; } .platform-logos img { height: 14px; } }
   </style>
 </head>
 <body>
@@ -217,27 +81,60 @@
       <a href="#contact">Contact</a>
     </div>
   </nav>
-
   <section class="hero" id="home">
     <div class="hero-content">
-      <img src="/logo.png" alt="4TH GROUND" class="hero-logo">
+      <img src="/logo.png" alt="4TH GROUND" class="hero-logo" id="heroLogo">
       <p class="tagline">WE DON'T JUST DISTRIBUTE FILMS • WE CONNECT THEM WITH THE RIGHT AUDIENCES • WE MAXIMIZE THEIR GLOBAL REACH</p>
     </div>
   </section>
-
   <section id="about">
     <div class="section-inner">
       <div class="section-title">About Us</div>
-      <p class="large-text">At 4ᵀᴴ GROUND, we are passionate about bringing independent films to audiences around the world.</p>
+      <p class="body-text">4ᵀᴴ GROUND is founded and run by independent film entrepreneurs who are passionate about bridging the gap between independent filmmakers and international audiences. We understand the challenges that independent producers face when trying to access professional distribution channels, and we are committed to building a more open, accessible, and filmmaker-focused pathway into the global streaming landscape.</p>
+      <p class="body-text">We are based in Johannesburg, South Africa. To ensure closer collaboration with filmmakers and strengthen our global reach, we also have an acquisitions team based in the United States and United Kingdom.</p>
       
-      <p class="body-text">We work closely with filmmakers, producers, and production companies to help their projects reach the global market through strategic digital distribution.</p>
+      <div class="platforms">
+        <div class="platforms-title">Distribution Partners</div>
+        <div class="platform-logos">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Prime Video">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Apple_TV_%2B_logo.svg" alt="Apple TV+">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Tubi_logo.svg" alt="Tubi">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_2022_logo.svg" alt="Google Play">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Roku_2017_logo.svg" alt="The Roku Channel">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Samsung_TV_Plus_logo_2023.svg" alt="Samsung TV Plus">
+        </div>
+      </div>
       
-      <p class="body-text">Our mission is to empower independent filmmakers by creating opportunities for their films to be seen from medium-sized to prominent streaming platforms worldwide. We believe great cinema deserves visibility, regardless of budget or origin.</p>
-      
-      <p class="body-text">With a filmmaker-first approach, we focus on building meaningful partnerships, supporting the creatives, and helping quality films expand beyond borders. From emerging filmmakers to established production companies, we are committed to delivering content to platforms that connect stories with audiences everywhere.</p>
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="/team1.jpg" alt="Sen Good" class="team-photo">
+          <div class="team-name">Sen Good</div>
+          <div class="team-role">Managing Director</div>
+          <div class="team-location">Johannesburg, SA</div>
+        </div>
+        <div class="team-member">
+          <img src="/team2.jpg" alt="Ben Armstrong" class="team-photo">
+          <div class="team-name">Ben Armstrong</div>
+          <div class="team-role">Sales Manager</div>
+          <div class="team-location">Johannesburg, SA</div>
+        </div>
+        <div class="team-member">
+          <img src="/team3.jpg" alt="Annie Thomas" class="team-photo">
+          <div class="team-name">Annie Thomas</div>
+          <div class="team-role">Acquisitions Manager</div>
+          <div class="team-location">New York, US</div>
+        </div>
+        <div class="team-member">
+          <img src="/team4.jpg" alt="Franki Wilson" class="team-photo">
+          <div class="team-name">Franki Wilson</div>
+          <div class="team-role">Acquisitions Coordinator</div>
+          <div class="team-location">London, UK</div>
+        </div>
+      </div>
     </div>
   </section>
-
   <section id="services">
     <div class="section-inner">
       <div class="section-title">Our Services</div>
@@ -245,28 +142,23 @@
         <p class="large-text">At 4ᵀᴴ GROUND, we provide global film distribution solutions tailored for independent filmmakers and production companies looking to expand their reach across international markets.</p>
         <p class="body-text">Our mission is to help powerful stories connect with audiences worldwide through strategic digital distribution and professional delivery services.</p>
       </div>
-      
       <div class="services-list">
         <div class="service-block">
           <h3>Distribution Channels</h3>
           <p>We work with a variety of distribution channels, including Subscription Video On Demand (SVOD), Advertising-Based Video On Demand (AVOD), Transactional Video On Demand (TVOD), FAST Channels, mobile streaming services, and inflight entertainment platforms. From medium-sized streaming services to prominent global platforms, we help position films where they have the best opportunity to grow and reach the right audiences.</p>
         </div>
-        
         <div class="service-block">
           <h3>Technical Delivery</h3>
           <p>Our team handles the technical preparation and delivery process required by modern streaming platforms. This includes film encoding, quality control, subtitle/closed captions integration, metadata preparation, and delivery packaging. We ensure that every project meets professional industry standards and platform specifications before distribution.</p>
         </div>
-        
         <div class="service-block">
           <h3>Marketing & Strategy</h3>
           <p>Beyond delivery, we also cover marketing and come up with promotional strategies designed to increase visibility and audience engagement. We assist with positioning films for the market, helping filmmakers identify the right platforms, audiences, and release opportunities for their projects. From trailers and artwork to promotional planning, we aim to strengthen the presentation and discoverability of every film we represent.</p>
         </div>
-        
         <div class="service-block">
           <h3>Inflight Entertainment</h3>
           <p>We also help filmmakers explore inflight entertainment opportunities, allowing films to reach international travellers through airline entertainment systems. This creates additional exposure and expands audience access beyond traditional streaming environments.</p>
         </div>
-        
         <div class="service-block">
           <h3>Filmmaker-First Partnership</h3>
           <p>At 4ᵀᴴ GROUND, we believe distribution should be collaborative and filmmaker-focused. We work hand in hand with creators throughout the entire process, offering guidance, communication, and support from onboarding to delivery and release. Our goal is not only to distribute films, but to build lasting partnerships with storytellers and help independent cinema thrive on a global scale.</p>
@@ -274,7 +166,6 @@
       </div>
     </div>
   </section>
-
   <section id="contact">
     <div class="section-inner">
       <div class="section-title">Get In Touch</div>
@@ -284,9 +175,30 @@
       </div>
     </div>
   </section>
-
   <footer>
     © 2026 4ᵀᴴ GROUND. ALL RIGHTS RESERVED.
   </footer>
+
+  <script>
+    const hero = document.querySelector('.hero');
+    const heroLogo = document.getElementById('heroLogo');
+    const navHeight = 65;
+    
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const heroHeight = hero.offsetHeight;
+      
+      if (scrolled < heroHeight) {
+        const moveUp = Math.min(scrolled * 0.88, heroHeight - navHeight - 70);
+        heroLogo.style.transform = `translateY(-${moveUp}px)`;
+        
+        if (scrolled > 70) {
+          hero.classList.add('scrolled');
+        } else {
+          hero.classList.remove('scrolled');
+        }
+      }
+    });
+  </script>
 </body>
 </html>
