@@ -8,69 +8,84 @@
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+    ::selection { background: rgba(255,255,255,0.15); color: #fff; }
     body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #000; color: #fff; line-height: 1.45; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-    nav { position: fixed; top: 0; width: 100%; padding: 18px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.98), rgba(0,0,0,0.7), transparent); backdrop-filter: blur(12px); }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 1;
+    }
+    nav { position: fixed; top: 0; width: 100%; padding: 18px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.98), rgba(0,0,0,0.8), transparent); backdrop-filter: blur(12px); }
     .logo img { height: 24px; width: auto; display: block; filter: brightness(1.1); }
-    nav a { color: #fff; text-decoration: none; margin-left: 35px; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; transition: opacity 0.2s; font-weight: 400; }
+    nav a { color: #fff; text-decoration: none; margin-left: 35px; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; transition: opacity 0.2s; font-weight: 400; opacity: 0.5; }
+    nav a.active { opacity: 1; }
     nav a:hover { opacity: 0.35; }
-    .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: #000 url('/hero.jpg') center/cover no-repeat; position: relative; overflow: hidden; }
-    .hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(0,0,0,0.1), rgba(0,0,0,0.95)); }
+    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: #000; position: relative; overflow: hidden; padding: 120px 0 60px; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(0,0,0,0.1), rgba(0,0,0,0.95)); pointer-events: none; }
     .hero-content { position: relative; z-index: 2; max-width: 1200px; padding: 0 20px; }
     .hero-logo { 
-      max-width: 520px; 
-      width: 70%; 
+      max-width: 480px; 
+      width: 65%; 
       height: auto; 
-      margin: 0 auto 30px; 
+      margin: 0 auto 25px; 
       display: block; 
       position: relative; 
-      transition: transform 0.1s linear; 
       mix-blend-mode: screen;
-      opacity: 0.95;
+      opacity: 0; 
+      transform: translateY(15px);
+      animation: fadeUp 1.2s ease 0.3s forwards;
+      will-change: transform;
     }
-    .hero .tagline { font-size: clamp(12px, 1.3vw, 15px); letter-spacing: 3.5px; text-transform: uppercase; opacity: 0.6; line-height: 1.6; font-weight: 300; transition: opacity 0.3s; }
-    .hero.scrolled .tagline { opacity: 0; }
+    .hero .tagline { 
+      font-size: clamp(11px, 1.2vw, 14px); 
+      letter-spacing: 3.5px; 
+      text-transform: uppercase; 
+      line-height: 1.6; 
+      font-weight: 300; 
+      opacity: 0; 
+      transform: translateY(15px);
+      animation: fadeUpTagline 1.2s ease 0.6s forwards;
+    }
+    @keyframes fadeUp {
+      to { opacity: 0.95; transform: translateY(0); }
+    }
+    @keyframes fadeUpTagline {
+      to { opacity: 0.55; transform: translateY(0); }
+    }
     section { padding: 90px 5%; border-bottom: 1px solid #080808; position: relative; z-index: 10; background: #000; }
     .section-inner { max-width: 1200px; margin: 0 auto; }
     .section-title { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 35px; opacity: 0.3; font-weight: 500; }
     .large-text { font-size: clamp(24px, 3vw, 40px); line-height: 1.15; font-weight: 300; margin-bottom: 25px; letter-spacing: -1.3px; }
     .body-text { font-size: 15px; line-height: 1.7; opacity: 0.65; max-width: 720px; margin-bottom: 16px; font-weight: 300; }
-    .platforms { margin-top: 45px; }
-    .platforms-title { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.25; margin-bottom: 22px; font-weight: 500; }
-    .platform-logos { display: flex; flex-wrap: wrap; gap: 26px; align-items: center; }
-    .platform-logos img { 
-      height: 15px; 
-      width: auto; 
-      filter: grayscale(1) brightness(0.4) drop-shadow(0 1px 6px rgba(255,255,255,0.1)); 
-      opacity: 0;
-      transform: translateX(-12px);
-      animation: slideIn 0.5s ease forwards;
-      transition: all 0.3s ease;
-    }
-    .platform-logos img:nth-child(1) { animation-delay: 0.1s; }
-    .platform-logos img:nth-child(2) { animation-delay: 0.14s; }
-    .platform-logos img:nth-child(3) { animation-delay: 0.18s; }
-    .platform-logos img:nth-child(4) { animation-delay: 0.22s; }
-    .platform-logos img:nth-child(5) { animation-delay: 0.26s; }
-    .platform-logos img:nth-child(6) { animation-delay: 0.3s; }
-    .platform-logos img:nth-child(7) { animation-delay: 0.34s; }
-    .platform-logos img:nth-child(8) { animation-delay: 0.38s; }
-    .platform-logos img:hover { 
-      filter: grayscale(0) brightness(1) drop-shadow(0 3px 10px rgba(255,255,255,0.2)); 
-      transform: translateX(0) scale(1.08);
-    }
-    @keyframes slideIn {
-      to { opacity: 0.4; transform: translateX(0); }
-    }
+    .films-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin-top: 45px; }
+    .films-grid img { width: 100%; aspect-ratio: 2/3; object-fit: cover; filter: grayscale(0.1); transition: all 0.4s ease; cursor: pointer; }
+    .films-grid img:hover { filter: grayscale(0); transform: scale(1.03); box-shadow: 0 10px 40px rgba(255,255,255,0.08); }
     .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-top: 45px; }
-    .team-member { text-align: left; }
+    .team-member { text-align: left; opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+    .team-member.visible { opacity: 1; transform: translateY(0); }
     .team-photo { width: 100%; aspect-ratio: 3/4; background: #0a0a0a; margin-bottom: 16px; object-fit: cover; filter: grayscale(0.15) contrast(1.05); }
     .team-name { font-size: 17px; margin-bottom: 4px; font-weight: 400; letter-spacing: -0.3px; }
     .team-role { font-size: 11px; opacity: 0.45; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 3px; font-weight: 500; }
     .team-location { font-size: 12px; opacity: 0.3; font-weight: 300; }
     .services-intro { margin-bottom: 50px; }
     .services-list { display: grid; gap: 45px; }
-    .service-block { border-left: 1px solid #151515; padding-left: 28px; }
-    .service-block h3 { font-size: 19px; margin-bottom: 14px; font-weight: 400; letter-spacing: -0.4px; }
+    .service-block { 
+      border-left: 1px solid #151515; 
+      padding-left: 28px; 
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+    .service-block:hover { 
+      border-left-color: #333; 
+      transform: translateX(8px);
+    }
+    .service-block h3 { font-size: 19px; margin-bottom: 14px; font-weight: 400; letter-spacing: -0.4px; transition: opacity 0.3s; }
+    .service-block:hover h3 { opacity: 1; }
     .service-block p { font-size: 14px; line-height: 1.65; opacity: 0.55; font-weight: 300; }
     #contact { text-align: center; padding: 130px 5%; }
     #contact .large-text { margin-bottom: 32px; }
@@ -78,15 +93,16 @@
     .contact-email a { color: #fff; text-decoration: none; border-bottom: 1px solid #1a1a1a; transition: all 0.3s; }
     .contact-email a:hover { border-color: #fff; opacity: 0.4; }
     footer { padding: 45px 5%; text-align: center; font-size: 8px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.2; border-top: 1px solid #080808; }
-    @media (max-width: 768px) { nav { padding: 16px 5%; } .logo img { height: 19px; } nav a { margin-left: 16px; font-size: 9px; letter-spacing: 1.8px; } section { padding: 65px 5%; } .hero-logo { width: 80%; margin-bottom: 20px; } .hero .tagline { letter-spacing: 2.5px; font-size: 11px; } .service-block { padding-left: 16px; } #contact { padding: 90px 5%; } .team-grid { gap: 28px; } .platform-logos { gap: 18px; } .platform-logos img { height: 13px; } }
+    @media (max-width: 768px) { nav { padding: 16px 5%; } .logo img { height: 19px; } nav a { margin-left: 16px; font-size: 9px; letter-spacing: 1.8px; } section { padding: 65px 5%; } .hero { padding: 100px 0 50px; } .hero-logo { width: 80%; margin-bottom: 20px; } .hero .tagline { letter-spacing: 2.5px; font-size: 10px; } .service-block { padding-left: 16px; } #contact { padding: 90px 5%; } .team-grid { gap: 28px; } .films-grid { gap: 18px; } }
   </style>
 </head>
 <body>
   <nav>
     <div class="logo"><img src="/logo.png" alt="4TH GROUND"></div>
     <div>
-      <a href="#home">Home</a>
+      <a href="#home" class="active">Home</a>
       <a href="#about">About</a>
+      <a href="#films">Films</a>
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
     </div>
@@ -94,29 +110,19 @@
   <section class="hero" id="home">
     <div class="hero-content">
       <img src="/logo.png" alt="4TH GROUND" class="hero-logo" id="heroLogo">
-      <p class="tagline">WE DON'T JUST DISTRIBUTE FILMS • WE CONNECT THEM WITH THE RIGHT AUDIENCES • WE MAXIMIZE THEIR GLOBAL REACH</p>
+      <p class="tagline" id="heroTagline">WE DON'T JUST DISTRIBUTE FILMS • WE CONNECT THEM WITH THE RIGHT AUDIENCES • WE MAXIMIZE THEIR GLOBAL REACH</p>
+      <div style="margin-top: 60px;">
+        <p class="body-text">At 4ᵀᴴ GROUND, we are passionate about bringing independent films to audiences around the world. We work closely with filmmakers, producers, and production companies to help their projects reach the global market through strategic digital distribution.</p>
+        <p class="body-text">Our mission is to empower independent filmmakers by creating opportunities for their films to be seen from medium-sized to prominent streaming platforms worldwide. We believe great cinema deserves visibility, regardless of budget or origin.</p>
+        <p class="body-text">With a filmmaker-first approach, we focus on building meaningful partnerships, supporting the creatives, and helping quality films expand beyond borders. From emerging filmmakers to established production companies, we are committed to delivering content to platforms that connect stories with audiences everywhere.</p>
+      </div>
     </div>
   </section>
   <section id="about">
     <div class="section-inner">
       <div class="section-title">About Us</div>
-      <p class="body-text">At 4ᵀᴴ GROUND, we are passionate about bringing independent films to audiences around the world. We work closely with filmmakers, producers, and production companies to help their projects reach the global market through strategic digital distribution.</p>
-      <p class="body-text">Our mission is to empower independent filmmakers by creating opportunities for their films to be seen from medium-sized to prominent streaming platforms worldwide. We believe great cinema deserves visibility, regardless of budget or origin.</p>
-      <p class="body-text">With a filmmaker-first approach, we focus on building meaningful partnerships, supporting the creatives, and helping quality films expand beyond borders. From emerging filmmakers to established production companies, we are committed to delivering content to platforms that connect stories with audiences everywhere.</p>
-      
-      <div class="platforms">
-        <div class="platforms-title">Our Team</div>
-        <div class="platform-logos">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Prime Video">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Apple_TV_%2B_logo.svg" alt="Apple TV+">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Tubi_logo.svg" alt="Tubi">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_2022_logo.svg" alt="Google Play">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Roku_2017_logo.svg" alt="The Roku Channel">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Samsung_TV_Plus_logo_2023.svg" alt="Samsung TV Plus">
-        </div>
-      </div>
+      <p class="body-text">4ᵀᴴ GROUND is a film distribution company founded and run by independent film entrepreneurs who are passionate about bridging the gap between independent filmmakers and international audiences. We understand the challenges that independent producers face when trying to access professional distribution channels, and we are committed to building a more open, accessible, and filmmaker-focused pathway into the global streaming landscape.</p>
+      <p class="body-text">We are based in Johannesburg, South Africa. To ensure closer collaboration with filmmakers and strengthen our global reach, we also have an acquisitions team based in the United States and United Kingdom. This allows us to stay closely connected to key industry territories, engage directly with international partners, and provide filmmakers with more responsive, hands-on support throughout the distribution process.</p>
       
       <div class="team-grid">
         <div class="team-member">
@@ -143,6 +149,17 @@
           <div class="team-role">Acquisitions Coordinator</div>
           <div class="team-location">London, UK</div>
         </div>
+      </div>
+    </div>
+  </section>
+  <section id="films">
+    <div class="section-inner">
+      <div class="section-title">Selected Work</div>
+      <p class="body-text">A glimpse of the stories we've helped bring to global audiences.</p>
+      <div class="films-grid">
+        <img src="/poster1.jpg" alt="Film Title" onerror="this.style.background='#0a0a0a'; this.style.aspectRatio='2/3';">
+        <img src="/poster2.jpg" alt="Film Title" onerror="this.style.background='#0a0a0a'; this.style.aspectRatio='2/3';">
+        <img src="/poster3.jpg" alt="Film Title" onerror="this.style.background='#0a0a0a'; this.style.aspectRatio='2/3';">
       </div>
     </div>
   </section>
@@ -193,23 +210,49 @@
   <script>
     const hero = document.querySelector('.hero');
     const heroLogo = document.getElementById('heroLogo');
-    const navHeight = 60;
+    const heroTagline = document.getElementById('heroTagline');
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('section');
+    const teamMembers = document.querySelectorAll('.team-member');
+    let ticking = false;
     
-    window.addEventListener('scroll', () => {
+    function updateOnScroll() {
       const scrolled = window.pageYOffset;
       const heroHeight = hero.offsetHeight;
+      const scrollPercent = Math.min(scrolled / heroHeight, 1);
       
-      if (scrolled < heroHeight) {
-        const moveUp = Math.min(scrolled * 0.9, heroHeight - navHeight - 60);
-        heroLogo.style.transform = `translateY(-${moveUp}px)`;
-        
-        if (scrolled > 60) {
-          hero.classList.add('scrolled');
-        } else {
-          hero.classList.remove('scrolled');
-        }
+      const logoMove = scrolled * 0.4;
+      heroLogo.style.transform = `translateY(-${logoMove}px)`;
+      heroTagline.style.opacity = Math.max(0.55 - scrollPercent * 0.8, 0);
+      
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (pageYOffset >= sectionTop) current = section.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+      });
+      
+      ticking = false;
+    }
+    
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateOnScroll);
+        ticking = true;
       }
     });
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 100);
+        }
+      });
+    }, { threshold: 0.2 });
+    teamMembers.forEach(member => observer.observe(member));
   </script>
 </body>
 </html>
