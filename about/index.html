@@ -11,6 +11,7 @@
 </head>
 <body class="bg-black text-white">
     
+    <!-- Nav stays absolute - overlaps the hero image -->
     <nav class="absolute top-0 w-full z-20 bg-gradient-to-b from-black/80 to-transparent">
         <div class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
             <a href="/" class="flex items-center gap-3">
@@ -26,16 +27,17 @@
         </div>
     </nav>
 
-    <!-- The fix: pt-20 pushes hero down so title clears the nav -->
-    <div class="relative h- w-full overflow-hidden pt-20">
+    <!-- pt-20 pushes content down so title clears nav, h-80 gives hero height -->
+    <div class="relative h-80 md:h-96 w-full overflow-hidden pt-20">
         <img src="https://mzone.b-cdn.net/vlcsnap-2026-06-01-04h48m45s377.png" 
              alt="4th Ground" 
              class="absolute inset-0 w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/30"></div>
         <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent"></div>
+        <!-- Title sits at bottom of hero, but hero starts 80px down due to pt-20 -->
         <div class="absolute inset-0 flex items-end">
             <div class="w-full max-w-7xl mx-auto px-6 pb-8 md:pb-10">
-                <h1 class="text-4xl md:text-6xl font-bold tracking-tight"></h1>
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tight">About Us</h1>
             </div>
         </div>
     </div>
