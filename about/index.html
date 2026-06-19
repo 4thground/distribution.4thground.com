@@ -21,4 +21,99 @@
                 <img src="/logo.png" alt="4TH GROUND" class="h-8">
             </a>
             <div class="flex gap-4 md:gap-8 text-xs md:text-sm font-medium">
-                <a href="/" class="
+                <a href="/" class="text-zinc-300 hover:text-white">Home</a>
+                <a href="/about/" class="text-white">About</a>
+                <a href="/services/" class="text-zinc-300 hover:text-white">Services</a>
+                <a href="/team/" class="text-zinc-300 hover:text-white">Team</a>
+                <a href="/contact/" class="text-zinc-300 hover:text-white">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- pt-20 pushes content down so title clears nav, h-80 gives hero height -->
+    <div class="relative h-80 md:h-96 w-full overflow-hidden pt-20">
+        <img src="/photo.jpeg" 
+             alt="4th Ground" 
+             class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/30"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent"></div>
+        <!-- Title sits at bottom of hero, but hero starts 80px down due to pt-20 -->
+        <div class="absolute inset-0 flex items-end">
+            <div class="w-full max-w-7xl mx-auto px-6 pb-8 md:pb-10">
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tight">About Us</h1>
+            </div>
+        </div>
+    </div>
+
+    <section class="max-w-5xl mx-auto px-6 py-12 md:py-16">
+        <div class="grid grid-cols-1 gap-6 md:gap-8">
+            
+            <!-- Who We Are -->
+            <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-6 md:p-8 hover:border-zinc-700 transition">
+                <div class="flex items-start gap-5">
+                    <div class="bg-white/10 p-3 rounded-md flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Who We Are</h3>
+                        <p class="text-zinc-300 leading-relaxed">4TH GROUND is a film distribution company founded and run by Independent film entrepreneurs who are passionate about bridging the gap between independent filmmakers and international audiences. We understand the challenges that independent producers face when trying to access professional distribution channels, and we are committed to building a more open, accessible, and filmmaker-focused pathway into the global streaming landscape.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pre-Sale Movie Store -->
+            <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-6 md:p-8 hover:border-zinc-700 transition">
+                <div class="flex items-start gap-5">
+                    <div class="bg-white/10 p-3 rounded-md flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Pre-Sale Movie Store</h3>
+                        <p class="text-zinc-300 leading-relaxed">We operate our own TVOD platform where filmmakers can start earning revenue while waiting for their films to be picked up by major platforms. Filmmakers suggest their own rental and buy prices, keeping control of their work and connecting directly with audiences. No gatekeepers, just immediate access to viewers.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Presence -->
+            <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-6 md:p-8 hover:border-zinc-700 transition">
+                <div class="flex items-start gap-5">
+                    <div class="bg-white/10 p-3 rounded-md flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Global Presence</h3>
+                        <p class="text-zinc-300 leading-relaxed">We are based in Johannesburg, South Africa. To ensure closer collaboration with filmmakers and strengthen our global reach, we also have an acquisitions team based in the United States and United Kingdom. This allows us to stay closely connected to key industry territories, engage directly with international partners, and provide filmmakers with more responsive, hands-on support throughout the distribution process.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Our Mission -->
+            <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-6 md:p-8 hover:border-zinc-700 transition">
+                <div class="flex items-start gap-5">
+                    <div class="bg-white/10 p-3 rounded-md flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Filmmaker-First Mission</h3>
+                        <p class="text-zinc-300 leading-relaxed">We exist to champion untold stories. 4TH GROUND is filmmaker-focused and creativity-first. Every decision we make is about giving independent creators leverage, transparency, and access to global audiences without compromising their vision or ownership.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="border-t border-zinc-800 py-8 text-center text-zinc-500 text-sm">
+        <p>© 2026 4TH GROUND. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
