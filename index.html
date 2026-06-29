@@ -43,33 +43,60 @@
 </script>
 </head>
 <body class="bg-black text-white">
-    <script>
-  // Always show gateway on load. No cookies, no sessionStorage.
-  document.body.classList.add('g4-locked');
-  const gateway = document.getElementById('g4-gateway');
-
-  // Push a fake history entry so Back = close gateway
-  history.pushState({g4: 'gateway'}, '', '#gateway');
-
-  document.getElementById('g4-enter').onclick = () => {
-    gateway.classList.add('hidden');
-    document.body.classList.remove('g4-locked');
-    history.pushState({g4: 'inside'}, '', window.location.pathname); // Move them "inside"
-  };
-
-  // If user presses Back while inside, show gateway again
-  window.onpopstate = (e) => {
-    if (e.state && e.state.g4 === 'gateway') {
-      gateway.classList.remove('hidden');
-      document.body.classList.add('g4-locked');
-    }
-  };
-
-  // If they land with #gateway in URL, force it open
-  if (window.location.hash === '#gateway') {
-    gateway.classList.remove('hidden');
-    document.body.classList.add('g4-locked');
+    <!-- 4THGROUND GATEWAY V5 - WILL SHOW FOR SURE -->
+<style>
+  #g4-gateway {
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    z-index: 999; /* Highest possible */
+    background: #000;
+    margin: 0; padding: 0;
+    display: flex; align-items: center; justify-content: center;
   }
+  #g4-gateway .g4-card {
+    background: #ffffff; /* WHITE CARD SO YOU SEE IT */
+    color: #000;
+    border-radius: 16px; 
+    padding: 32px 28px;
+    width: 85%; max-width: 400px; 
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  #g4-gateway h1 { font-size: 22px; margin: 0 0 10px; }
+  #g4-gateway p { font-size: 15px; color: #444; margin: 0 0 20px; }
+  #g4-gateway button {
+    width: 100%; padding: 14px; font-size: 17px; font-weight: bold;
+    border-radius: 12px; border: 1px solid #000; 
+    background: #000; color: #fff; cursor: pointer;
+  }
+  #g4-gateway.hidden { display: none !important; }
+  body.g4-locked { overflow: hidden !important; }
+</style>
+
+<div id="g4-gateway">
+  <div class="g4-card">
+    <h1>4thGROUND</h1>
+    <p>Independent Cinema. One Store.</p>
+    <button id="g4-enter">For Filmmakers</button>
+  </div>
+</div>
+
+<script>
+  document.body.classList.add('g4-locked');
+  history.replaceState({}, '', '#gateway');
+  
+  document.getElementById('g4-enter').onclick = function() {
+    document.getElementById('g4-gateway').classList.add('hidden');
+    document.body.classList.remove('g4-locked');
+    history.pushState({}, '', '#site');
+  };
+
+  window.onpopstate = function() {
+    document.getElementById('g4-gateway').classList.remove('hidden');
+    document.body.classList.add('g4-locked');
+    history.pushState({}, '', '#gateway');
+  };
 </script>
     <!-- Nav -->
     <nav class="absolute top-0 w-full z-20 bg-gradient-to-b from-black/80 to-transparent">
