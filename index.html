@@ -282,50 +282,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const slides = [...document.querySelectorAll("#g4-slides img")];
 
-let current = 0;
+  let current = 0;
 
-slides.forEach(img=>{
+  slides.forEach(img => {
     const preload = new Image();
     preload.src = img.src;
-});
+  });
 
-setInterval(()=>{
-
+  setInterval(() => {
     slides[current].classList.remove("active");
 
     current++;
 
-    if(current >= slides.length){
-        current = 0;
+    if (current >= slides.length) {
+      current = 0;
     }
 
     slides[current].classList.add("active");
-
-},3000);
-  }
+  }, 3000);
 
   const WATCH_URL = "https://watch.4thground.com"; 
   const ALLOWED_URL = "https://watch.4thground.com"; 
 
-  document.getElementById('g4-watch').onclick = function() {
-    if(WATCH_URL === ALLOWED_URL) {
+  document.getElementById('g4-watch').onclick = function () {
+    if (WATCH_URL === ALLOWED_URL) {
       window.location.href = WATCH_URL;
     } else {
       document.getElementById('g4-soon').classList.add('show');
     }
   };
 
-  document.getElementById('g4-back').onclick = function() {
+  document.getElementById('g4-back').onclick = function () {
     document.getElementById('g4-soon').classList.remove('show');
   };
 
-  document.getElementById('g4-enter').onclick = function() {
+  document.getElementById('g4-enter').onclick = function () {
     document.getElementById('g4-gateway').classList.add('hidden');
     document.body.classList.remove('locked');
     history.pushState(null, '', '#site');
   };
 
-  window.onpopstate = function() {
+  window.onpopstate = function () {
     document.getElementById('g4-gateway').classList.remove('hidden');
     document.body.classList.add('locked');
     history.pushState(null, '', '#gate');
