@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preload" as="image" href="/posters/film1.png">
+<link rel="preload" as="image" href="/posters/film2.png">
+<link rel="preload" as="image" href="/posters/film3.png">
+<link rel="preload" as="image" href="/posters/film4.png">
+<link rel="preload" as="image" href="/posters/film5.png">
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="4TH GROUND is a worldwide film distribution company. Filmmaker-focused, creativity-first. We bring untold stories to global audiences.4thGround founder is Sen Good.">
@@ -61,33 +67,41 @@
     z-index: 0;
   }
 
-  #g4-slides img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    filter: brightness(0.4) blur(1px);
-  }
+ #g4-slides img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
 
-  #g4-slides img.active {
-    opacity: 1;
-  }
+    opacity:0;
+    transform:scale(1);
+    transition:
+        opacity 1.4s ease-in-out,
+        transform 8s linear;
 
-  #g4-slides::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(0,0,0,.2) 0%,
-      rgba(0,0,0,.9) 80%,
-      #000 100%
-    );
-    z-index: 1;
-  }
+    filter:brightness(.45);
+    will-change:opacity,transform;
+}
+
+#g4-slides::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at center,
+            rgba(0,0,0,0) 0%,
+            rgba(0,0,0,.15) 45%,
+            rgba(0,0,0,.45) 75%,
+            rgba(0,0,0,.75) 100%),
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.15),
+            rgba(0,0,0,.75),
+            #000);
+    z-index:2;
+}
+    
 
   /* FIXED SELECTORS */
 
@@ -267,14 +281,28 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('locked');
   history.replaceState(null, '', '#gate');
 
-  const slides = document.querySelectorAll('#g4-slides img');
-  let current = 0;
-  if(slides.length > 1) {
-    setInterval(() => {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-    }, 3000);
+  const slides = [...document.querySelectorAll("#g4-slides img")];
+
+let current = 0;
+
+slides.forEach(img=>{
+    const preload = new Image();
+    preload.src = img.src;
+});
+
+setInterval(()=>{
+
+    slides[current].classList.remove("active");
+
+    current++;
+
+    if(current >= slides.length){
+        current = 0;
+    }
+
+    slides[current].classList.add("active");
+
+},3000);
   }
 
   const WATCH_URL = "https://watch.4thground.com"; 
