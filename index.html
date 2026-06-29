@@ -163,17 +163,6 @@
 padding-top: 200px;
     justify-content: center;
     text-align: center;
-     
-      <div class="g4-menu">
-  <button class="menu-btn">Menu ▾</button>
-
-  <div class="menu-dropdown">
-    <a href="https://watch.4thground.com" target="_blank">Watch Now</a>
-    <a href="#">Filmmakers</a>
-    <a href="/">Home</a>
-    <a href="/support">Help Center</a>
-  </div>
-</div>
   }
 
   #g4-gateway .box {
@@ -315,6 +304,19 @@ padding-top: 200px;
     <img src="/posters/film5.png" alt="" onerror="this.remove()">
   </div>
   <div class="wrap">
+
+  <div class="g4-menu">
+    <button class="menu-btn">Menu ▾</button>
+
+    <div class="menu-dropdown">
+      <a href="https://watch.4thground.com" target="_blank">Watch Now</a>
+      <a href="#">Filmmakers</a>
+      <a href="/">Home</a>
+      <a href="/support">Help Center</a>
+    </div>
+  </div>
+
+
     <div class="box">
       <div class="brand">Platform | Pre-Launch</div>
       <h1>What's On Digital | 4thGROUND</h1>
@@ -344,16 +346,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.querySelector('.menu-btn');
 const dropdown = document.querySelector('.menu-dropdown');
 
-menuBtn.onclick = function () {
-  dropdown.style.display =
-    dropdown.style.display === "block" ? "none" : "block";
-};
+if (menuBtn && dropdown) {
+  menuBtn.onclick = function () {
+    dropdown.style.display =
+      dropdown.style.display === "block" ? "none" : "block";
+  };
 
-document.addEventListener('click', function (e) {
-  if (!document.querySelector('.g4-menu').contains(e.target)) {
-    dropdown.style.display = "none";
-  }
-});
+  document.addEventListener('click', function (e) {
+    const menu = document.querySelector('.g4-menu');
+
+    if (menu && !menu.contains(e.target)) {
+      dropdown.style.display = "none";
+    }
+  });
+}
 
   const slides = [...document.querySelectorAll("#g4-slides img")];
 
