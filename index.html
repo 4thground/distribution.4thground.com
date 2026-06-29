@@ -102,15 +102,40 @@
   <div class="g4-bg"></div>
   <div class="g4-card">
     <div class="g4-brand">4thGROUND</div>
-    <h1>WHAT'S STREAMING?.</h1>
-    <p>Rent or buy award-winning films instantly. No membership needed.</p>
+    <h1>Independent Cinema. One Store.</h1>
+    <p>Rent award-winning films instantly. No membership needed.</p>
     
     <a href="https://watch.4thground.com" style="text-decoration:none;">
       <button class="g4-btn primary">Watch Movies</button>
     </a>
     <div class="g4-note">No subscription required</div>
     
-    <button id="g4-enter" class="g4-btn secondary
+    <button id="g4-enter" class="g4-btn secondary">For Filmmakers</button>
+  </div>
+</div>
+
+<script>
+  const gateway = document.getElementById('g4-gateway');
+  
+  // Always show gateway first
+  gateway.classList.remove('hidden');
+  document.body.classList.add('g4-locked');
+  history.replaceState({page: 'gateway'}, '', '#gateway');
+
+  // Enter site
+  document.getElementById('g4-enter').onclick = () => {
+    gateway.classList.add('hidden');
+    document.body.classList.remove('g4-locked');
+    history.pushState({page: 'filmmakers'}, '');
+  };
+
+  // Back button = show gateway again
+  window.addEventListener('popstate', () => {
+    gateway.classList.remove('hidden');
+    document.body.classList.add('g4-locked');
+    history.pushState({page: 'gateway'}, '', '#gateway');
+  });
+</script>
     <!-- Nav -->
     <nav class="absolute top-0 w-full z-20 bg-gradient-to-b from-black/80 to-transparent">
         <div class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
