@@ -1,1 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="4th Ground Refund Policy. TVOD rentals are 3 to 7 days. Rentals are final once playback begins. Refund rules for technical failure, duplicate charges, delisted films.">
+<title>Refund Policy - 4th Ground</title>
+<style>
+  :root{--bg:#000;--fg:#fff;--muted:#a1a1aa;--muted-2:#d4d4d8;--border:rgba(255,255,255,.1);--glass:rgba(255,255,255,.06);--glass-2:#0a0a0a}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--fg);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  
+  header{position:fixed;top:0;left:0;right:0;z-index:50;background:linear-gradient(180deg,rgba(0,0,0,.85),rgba(0,0,0,.85),transparent);padding:16px 20px}
+  @media(min-width:768px){header{padding:20px 48px}}
+  header .wrap{display:flex;align-items:center;justify-content:space-between}
+  .logo{font-size:20px;font-weight:700;letter-spacing:-.02em;color:#fff;text-decoration:none}
+  @media(min-width:768px){.logo{font-size:24px}}
+  .btn{border-radius:999px;background:rgba(255,255,255,.1);padding:8px 16px;font-size:14px;font-weight:600;color:#fff;text-decoration:none;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:.2s}
+  .btn:hover{background:rgba(255,255,255,.2)}
 
+  .hero{position:relative;min-height:70svh;display:flex;align-items:flex-end;overflow:hidden;padding:112px 20px 56px}
+  @media(min-width:768px){.hero{min-height:75vh;padding:112px 48px 80px}}
+  .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at top,rgba(255,255,255,.16),transparent 35%),linear-gradient(to top,#000,rgba(0,0,0,.55),#000)}
+  .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#000,rgba(0,0,0,.7),transparent)}
+  .hero .wrap{position:relative;z-index:10;width:100%}
+  .eyebrow{margin-bottom:12px;font-size:14px;font-weight:600;letter-spacing:.05em;color:var(--muted)}
+  h1{max-width:900px;font-size:48px;font-weight:700;line-height:1;letter-spacing:-.02em}
+  @media(min-width:768px){h1{font-size:96px}}
+  .sub{margin-top:24px;max-width:640px;font-size:18px;font-weight:500;line-height:1.6;color:var(--muted-2)}
+  @media(min-width:768px){.sub{font-size:20px}}
+
+  main{padding-bottom:80px}
+  .muted{margin-bottom:32px;font-size:14px;color:var(--muted)}
+  .grid{display:grid;gap:16px}
+  @media(min-width:768px){.grid{grid-template-columns:repeat(3,1fr)}}
+  .card{border:1px solid var(--border);background:var(--glass);border-radius:24px;padding:24px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  .card h2{font-size:20px;font-weight:700}
+  .card p,.card li{margin-top:12px;font-size:14px;line-height:1.6;color:var(--muted)}
+  .card ul{list-style:disc;padding-left:20px;margin-top:12px}
+  .card ul li{margin-top:8px}
+  .card a{color:#fff;text-decoration:underline;text-underline-offset:4px}
+  .span3{grid-column:1/-1}
+  .contact{margin-top:48px;border:1px solid var(--border);background:var(--glass-2);border-radius:24px;padding:24px 32px}
+  .contact h2{font-size:24px;font-weight:700}
+  .contact p{margin-top:16px;max-width:720px;color:var(--muted)}
+  .email{margin-top:12px;display:inline-block;font-size:18px;font-weight:600;color:#fff;text-decoration:underline;text-underline-offset:4px;transition:.2s}
+  .email:hover{text-decoration-color:#fff}
+  .legal-links{margin-top:20px;display:flex;flex-wrap:wrap;gap:16px;font-size:14px}
+  .legal-links a{color:var(--muted);text-decoration:underline;text-underline-offset:4px;transition:.2s}
+  .legal-links a:hover{color:#fff}
+
+  footer{border-top:1px solid var(--border);padding:40px 20px;font-size:14px;color:var(--muted)}
+  @media(min-width:768px){footer{padding:40px 48px}}
+  .footer-wrap{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+  .footer-links{display:flex;flex-wrap:wrap;gap:16px 24px;justify-content:center}
+  @media(min-width:768px){.footer-links{justify-content:flex-start}}
+  .footer-links a{color:var(--muted);text-decoration:none;transition:.2s}
+  .footer-links a:hover{color:#fff}
+  .footer-bottom{padding-top:16px;border-top:1px solid rgba(255,255,255,.05);display:flex;flex-direction:column;gap:16px;align-items:center;justify-content:space-between}
+  @media(min-width:768px){.footer-bottom{flex-direction:row}}
+  .footer-bottom small{font-size:12px;color:#52525b}
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap">
+      <a href="/" class="logo">4th Ground</a>
+      <a href="/" class="btn">Home</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">4th Ground Rentals</p>
+      <h1>Refund Policy</h1>
+      <p class="sub">Rentals are for 3 to 7 days depending on the film and price. Here’s when we can and cannot issue refunds.</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="wrap">
+      <p class="muted">Last updated: June 2026 | 4th Ground, a division of KC Company (Pty) Ltd Reg. No. 2023/664072/07</p>
+
+      <div class="grid">
+        <div class="card">
+          <h2>1. TVOD Nature of Rentals</h2>
+          <p>All films are rented, not purchased. Rental windows are 3 to 7 days as shown at checkout. Because digital access is delivered instantly, all rentals are final once playback begins, except as stated below.</p>
+        </div>
+
+        <div class="card">
+          <h2>2. Eligible for Refund</h2>
+          <ul>
+            <li>Technical failure: Platform error prevents playback and cannot be resolved within 24 hours.</li>
+            <li>Duplicate charge: You were charged more than once for the same rental.</li>
+            <li>Unauthorized purchase: Account compromised and purchase was not made by you.</li>
+            <li>Film delisted: Title is removed within 24 hours of your rental due to a licensing issue.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>3. Not Eligible for Refund</h2>
+          <ul>
+            <li>Playback started: You pressed Play or the rental window started.</li>
+            <li>Change of mind: You do not like the film, cast, rating, or it does not meet expectations.</li>
+            <li>Expired access: Your 3-7 day rental window has ended.</li>
+            <li>Device or internet: Issues caused by your connection, hardware, or browser.</li>
+            <li>Region/VPN issues: Title not available in your territory due to licensing.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>4. Licensed Content Assurance</h2>
+          <p>4th Ground only streams fully licensed films, including all music and artwork clearances. "Coming soon" titles appear only after a license is secured. If a title is removed for rights reasons, refunds apply per Section 2.</p>
+        </div>
+
+        <div class="card">
+          <h2>5. How We Process Refunds</h2>
+          <p>Approved refunds are issued to your original payment method by our payment processor. Processing time: 5-10 business days depending on your bank. VAT or taxes included in the rental are also refunded.</p>
+        </div>
+
+        <div class="card">
+          <h2>6. Consumer Protection</h2>
+          <p>This policy does not affect your rights under South African Consumer Protection Act 68 of 2008 or POPIA. For defective service or non-delivery, you may have additional remedies at law.</p>
+        </div>
+
+        <div class="card span3">
+          <h2>7. How to Request a Refund</h2>
+          <p>Email <a href="mailto:support@4thground.com">support@4thground.com</a> within 72 hours of purchase with: your order ID, email used, film title, and a short description with screenshots if relevant. We will respond within 48 hours. Approved cases are processed without delay.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <h2>Refund Contact</h2>
+        <p>4th Ground, a division of KC Company (Pty) Ltd Reg. No. 2023/664072/07. Johannesburg, South Africa.</p>
+        <a href="mailto:support@4thground.com" class="email">support@4thground.com</a>
+        <div class="legal-links">
+          <a href="/terms">Terms of Service</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/dmca">DMCA</a>
+          <a href="/support">Support</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-links">
+        <a href="/terms">Terms of Service</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/cookies">Cookie Policy</a>
+        <a href="/refund-policy">Refund Policy</a>
+        <a href="/dmca">DMCA</a>
+        <a href="/support">Support</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 4th Ground. All rights reserved.</p>
+        <small>All content and trademarks are property of their respective owners.</small>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
