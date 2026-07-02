@@ -49,7 +49,7 @@
   }
   .subheader sup{font-size:.6em;vertical-align:top}
 
-  /* 2. Quote Center Stage */
+  /* 2. Quote Center Stage + Apple TV Flare Border */
   .quote-wrap{
     position:relative;
     width:100%;
@@ -58,7 +58,50 @@
     display:grid;
     place-items:center;
     overflow:hidden;
+    border-radius: 32px; /* rounded Apple TV card */
+    isolation:isolate; /* keep glow behind text */
   }
+  /* The rotating flare border */
+  .quote-wrap::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    padding:1.5px; /* border thickness */
+    border-radius:inherit;
+    background: conic-gradient(
+      from 0deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0) 70%,
+      rgba(255,255,255,.55) 78%,
+      rgba(180,220,255,.8) 85%, 
+      rgba(255,255,255,.55) 92%,
+      rgba(255,255,255,0) 100%
+    );
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    animation: flare-rotate 8s linear infinite;
+    filter: blur(.5px); /* soft Apple TV glow */
+    pointer-events:none;
+    z-index:1;
+  }
+  /* Inner glass panel so text isn't on the glow directly */
+  .quote-wrap::after{
+    content:"";
+    position:absolute;
+    inset:1.5px;
+    background: rgba(0,0,0,.35);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: calc(32px - 1.5px);
+    z-index:2;
+  }
+  @keyframes flare-rotate{
+    to{transform: rotate(360deg)}
+  }
+
   .quote{
     position:absolute;
     inset:0;
@@ -71,6 +114,7 @@
     transition: opacity 1.2s ease, transform 5s ease-out;
     will-change: opacity, transform;
     pointer-events:none;
+    z-index:3; /* above the glass */
   }
   .quote.active{
     opacity:1;
@@ -133,6 +177,8 @@
   @media (max-width: 640px){
     .subheader{padding:12px 18px;font-size:15px}
     .marquee{padding-bottom:24px}
+    .quote-wrap{border-radius:24px}
+    .quote-wrap::after{border-radius: calc(24px - 1.5px)}
   }
 </style>
 </head>
