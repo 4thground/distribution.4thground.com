@@ -107,34 +107,6 @@
 .menu-dropdown a:last-child {
   border-bottom: none;
 }
-
-    .g4-desktop-nav{
-  display: none; /* hidden on mobile by default */
-  gap: 24px;
-  align-items: center;
-}
-.g4-desktop-nav a{
-  color: rgba(255,255,255,.85);
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: .2s;
-}
-.g4-desktop-nav a:hover{
-  color: #fff;
-}
-
-/* Desktop: show nav, hide burger + dropdown */
-@media (min-width: 768px){
-  .g4-desktop-nav{ display: flex; }
-  .menu-btn{ display: none; }
-  .menu-dropdown{ display: none !important; }
-}
-
-/* Mobile: hide nav, show burger */
-@media (max-width: 767px){
-  .g4-desktop-nav{ display: none; }
-}
     
   #g4-gateway {
     position: fixed;
@@ -205,7 +177,6 @@ padding-top: 200px;
     justify-content: center;
     text-align: center;
   }
-    
 
   #g4-gateway .box {
     max-width: 500px;
@@ -328,24 +299,6 @@ padding-top: 200px;
     font-weight: 700;
     cursor: pointer;
   }
-    <div class="g4-menu">
-  <nav class="g4-desktop-nav">
-    <a href="https://4thground.com/launchingsoon/" target="_blank">Watch Now</a>
-    <a href="/">Home</a>
-    <a href="/support">Help Center</a>
-  </nav>
-
-  <button class="menu-btn" aria-label="Menu">
-    <span></span>
-    <span></span>
-  </button>
-
-  <div class="menu-dropdown">
-    <a href="https://4thground.com/launchingsoon/" target="_blank">Watch Now</a>
-    <a href="/">Home</a>
-    <a href="/support">Help Center</a>
-  </div>
-</div>
 
   #g4-gateway.hidden {
     display: none !important;
@@ -355,35 +308,6 @@ padding-top: 200px;
     overflow: hidden !important;
   }
 </style>
-
-    <div id="g4-gateway">
-  <div id="g4-slides">
-    <img src="/posters/film1.png" alt="" class="active" onerror="this.remove()">
-    <img src="/posters/film2.png" alt="" onerror="this.remove()">
-    <img src="/posters/film3.png" alt="" onerror="this.remove()">
-    <img src="/posters/film4.png" alt="" onerror="this.remove()">
-    <img src="/posters/film5.png" alt="" onerror="this.remove()">
-  </div>
-  <div class="wrap">
-
-    <div class="g4-menu">
-      <nav class="g4-desktop-nav">
-        <a href="https://4thground.com/launchingsoon/" target="_blank">Watch Now</a>
-        <a href="/">Home</a>
-        <a href="/support">Help Center</a>
-      </nav>
-
-      <button class="menu-btn" aria-label="Menu">
-        <span></span>
-        <span></span>
-      </button>
-
-      <div class="menu-dropdown">
-        <a href="https://4thground.com/launchingsoon/" target="_blank">Watch Now</a>
-        <a href="/">Home</a>
-        <a href="/support">Help Center</a>
-      </div>
-    </div>
 <div id="g4-gateway">
   <div id="g4-slides">
     <img src="/posters/film1.png" alt="" class="active" onerror="this.remove()">
