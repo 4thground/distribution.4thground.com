@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://4thground.com/sitemap.xml
+Sitemap: https://distribution.4thground.com/sitemap.xml
