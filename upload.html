@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload Film - 4th Ground</title>
+  <script src="https://upload.bunnycdn.com/widget.js"></script>
+  <style>
+    body { font-family: Arial; max-width: 600px; margin: 50px auto; }
+    input, textarea { width: 100%; margin: 8px 0; padding: 8px; }
+    #bunny-upload { margin: 20px 0; }
+  </style>
+</head>
+<body>
+  <h2>Upload Your Film to 4th Ground</h2>
+  
+  <form id="filmForm">
+    <input type="text" id="title" placeholder="Film Title" required>
+    <textarea id="description" placeholder="Description"></textarea>
+    <input type="text" id="filmmakerId" placeholder="Your Filmmaker ID" required>
+  </form>
+
+  <div id="bunny-upload"></div>
+  <p id="status"></p>
+
+  <script>
+    // First get a secure upload token from YOUR server
+    fetch('/api/get-bunny-token.php') 
+      .then(res => res.json())
+      .then(data => {
+        BunnyUploadWidget.init({
+          libraryId: 123456, // <-- REPLACE with your Bunny Library ID
+          authorizationToken: data.token, // <-- comes from your server
+          collection: "Pending Review",
+          maximumFileSize: 50000000000, // 50GB
+          allowedFileTypes: ["video/mp4", "video/quicktime", "video/mkv"],
+          onUploadComplete: function(video) {
+            document.getElementById('status').innerText = "Upload Complete! Video ID: " + video.guid;
+            
+            // Send video info to your database
+            saveFilmData(video.guid);
+          },
+          onError: function(error) {
+            document.getElementById('status').innerText = "Upload Error: " + error;
+          }
+        });
+      });
+
+    function saveFilmData(videoGuid) {
+      const filmData = {
+        video_guid: videoGuid,
+        title: document.getElementById('title').value,
+        description: document.getElementById('description').value,
+        filmmaker_id: document.getElementById('filmmakerId').value
+      };
+      
+      fetch('/api/save-film.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(filmData)
+      });
+    }
+  </script>
+</body>
+</html>
